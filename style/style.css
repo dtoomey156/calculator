@@ -1,0 +1,87 @@
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.calc-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-body {
+    height: 40vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+
+    border: .5rem solid #0d6efd;
+    border-radius: 1rem;
+    
+}
+
+.output {
+    flex-basis: 100%;
+    max-height: 20%;
+    border: .25rem solid #0d6efd;
+    margin: 1rem;
+    border-radius: 1rem;
+    color: #0d6efd;
+    padding: .5rem  ;
+}
+
+.previous-num {
+    flex-basis: 100%;
+    text-align: right;
+    font-size: 2rem;
+}
+
+.current-num {
+    flex-basis: 100%;
+    text-align: right;
+    font-size: 3rem;
+}
+
+.keys {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.keys-row-one , .keys-row-two , .keys-row-three , .keys-row-four{
+    display: flex;
+    justify-content: space-around;
+}
+
+.keys-row-five {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    background: none;
+    color: #0d6efd;
+    border: .25rem solid #0d6efd;
+    border-radius: 1rem;
+    cursor: pointer;
+    outline: inherit;
+    width: 10rem;
+    font-size: 3rem;
+}
+
+#blank {
+    width: 10rem;
+}
