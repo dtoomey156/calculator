@@ -21,7 +21,10 @@ numberButtons.forEach(poop => {
 })
 
 // Function that will update the display
+// textContent will return a string
 
 function DisplayUpdater(number) {
     console.log(number);
+    currentNum += number;
+    currentDisplayNumber.textContent = currentNum;
 }
