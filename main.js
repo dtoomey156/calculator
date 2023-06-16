@@ -31,3 +31,20 @@ function DisplayUpdater(number) {
     }
     
 }
+
+
+// Adding event listener for operators and function that sets variable for operator
+
+operators.forEach(btn => {
+    btn.addEventListener("click", e => {
+        handleOperator(e.target.textContent);
+    })
+})
+
+function handleOperator(op) {
+    operator = op;
+    previousNum = currentNum;
+    previousDisplayNumber.textContent = previousNum;
+    currentNum = "";
+    currentDisplayNumber.textContent = 0;
+}
