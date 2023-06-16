@@ -25,6 +25,9 @@ numberButtons.forEach(poop => {
 
 function DisplayUpdater(number) {
     console.log(number);
-    currentNum += number;
-    currentDisplayNumber.textContent = currentNum;
+    if (currentNum.length <= 11) {
+        currentNum += number;
+        currentDisplayNumber.textContent = currentNum;
+    }
+    
 }
