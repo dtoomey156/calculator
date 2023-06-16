@@ -44,7 +44,7 @@ operators.forEach(btn => {
 function handleOperator(op) {
     operator = op;
     previousNum = currentNum;
-    previousDisplayNumber.textContent = previousNum;
+    previousDisplayNumber.textContent = previousNum + operator;
     currentNum = "";
     currentDisplayNumber.textContent = 0;
 }
