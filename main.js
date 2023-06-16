@@ -12,4 +12,16 @@ const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 
 // Adds event listeners to number buttons
+// Understanding this is bad practice, I'm using whacky variables to reinforce JS function to myself
 
+numberButtons.forEach(poop => {
+    poop.addEventListener("click", whatever => {
+        DisplayUpdater(whatever.target.textContent);
+    })
+})
+
+// Function that will update the display
+
+function DisplayUpdater(number) {
+    console.log(number);
+}
