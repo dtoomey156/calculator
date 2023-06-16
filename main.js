@@ -11,6 +11,9 @@ const clear = document.querySelector(".clear");
 const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 
+equal.addEventListener("click", calculate);
+clear.addEventListener("click", clearDisplay);
+
 // Adds event listeners to number buttons
 // Understanding this is bad practice, I'm using whacky variables to reinforce JS function to myself
 
@@ -44,7 +47,37 @@ operators.forEach(btn => {
 function handleOperator(op) {
     operator = op;
     previousNum = currentNum;
-    previousDisplayNumber.textContent = previousNum + operator;
+    previousDisplayNumber.textContent = previousNum + " " + operator;
     currentNum = "";
     currentDisplayNumber.textContent = 0;
+}
+
+// logic for calculating numbers
+
+function calculate() {
+    previousNum = Number(previousNum);
+    currentNum = Number(currentNum);
+
+    if (operator === "+") {
+        previousNum += currentNum;
+    } else if (operator === "-") {
+        previousNum -= currentNum;
+    } else if (operator === "X") {
+        previousNum *= previousNum;
+    } else if (operator=== "/") {
+        previousNum /= previousNum;
+    }
+    currentDisplayNumber.textContent = previousNum;
+    previousDisplayNumber.textContent = "0";
+    previousNum = "";
+    currentNum = "";
+}
+
+function clearDisplay() {
+    previousNum = "";
+    currentNum = "";
+    operator = "";
+    currentDisplayNumber.textContent = "0";
+    previousDisplayNumber.textContent = "0";
+
 }
