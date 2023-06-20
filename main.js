@@ -11,7 +11,12 @@ const clear = document.querySelector(".clear");
 const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 
-equal.addEventListener("click", calculate);
+// Added validation to event listener so that the calculate fucntion only fires if there is a current num and previous num
+
+equal.addEventListener("click", () => {
+    if(currentNum != "" && previousNum !="")
+    calculate();
+});
 clear.addEventListener("click", clearDisplay);
 
 // Adds event listeners to number buttons
@@ -68,7 +73,7 @@ function calculate() {
         previousNum /= previousNum;
     }
     currentDisplayNumber.textContent = previousNum;
-    previousDisplayNumber.textContent = "0";
+    previousDisplayNumber.textContent = "--";
     previousNum = "";
     currentNum = "";
 }
@@ -77,7 +82,7 @@ function clearDisplay() {
     previousNum = "";
     currentNum = "";
     operator = "";
-    currentDisplayNumber.textContent = "0";
-    previousDisplayNumber.textContent = "0";
+    currentDisplayNumber.textContent = "--";
+    previousDisplayNumber.textContent = "--";
 
 }
