@@ -1,6 +1,7 @@
 let currentNum = "";
 let previousNum = "";
 let operator = "";
+let point = "";
 
 const currentDisplayNumber = document.querySelector(".current-num");
 const previousDisplayNumber = document.querySelector(".previous-num");
@@ -17,7 +18,10 @@ equal.addEventListener("click", () => {
     if(currentNum != "" && previousNum !="")
     calculate();
 });
+
 clear.addEventListener("click", clearDisplay);
+
+decimal.addEventListener("click", decimalNumber);
 
 // Adds event listeners to number buttons
 // Understanding this is bad practice, I'm using whacky variables to reinforce JS function to myself
@@ -36,6 +40,7 @@ function DisplayUpdater(number) {
     if (currentNum.length <= 11) {
         currentNum += number;
         currentDisplayNumber.textContent = currentNum;
+        console.log(currentNum + "current number")
     }
     
 }
@@ -55,6 +60,7 @@ function handleOperator(op) {
     previousDisplayNumber.textContent = previousNum + " " + operator;
     currentNum = "";
     currentDisplayNumber.textContent = 0;
+    console.log(currentNum + "current num")
 }
 
 // logic for calculating numbers
@@ -85,4 +91,12 @@ function clearDisplay() {
     currentDisplayNumber.textContent = "--";
     previousDisplayNumber.textContent = "--";
 
+}
+
+function decimalNumber() {
+    if(!currentNum.includes(".")) {
+        currentNum += ".";
+        console.log(currentNum + "current num");
+        currentDisplayNumber.textContent = currentNum;
+    }
 }
