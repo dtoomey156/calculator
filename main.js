@@ -23,6 +23,8 @@ clear.addEventListener("click", clearDisplay);
 
 decimal.addEventListener("click", decimalNumber);
 
+window.addEventListener("keydown", keyPressHandler);
+
 // Adds event listeners to number buttons
 // Understanding this is bad practice, I'm using whacky variables to reinforce JS function to myself
 
@@ -73,7 +75,7 @@ function calculate() {
         previousNum += currentNum;
     } else if (operator === "-") {
         previousNum -= currentNum;
-    } else if (operator === "X") {
+    } else if (operator === "x") {
         previousNum *= previousNum;
     } else if (operator=== "/") {
         previousNum /= previousNum;
@@ -98,5 +100,34 @@ function decimalNumber() {
         currentNum += ".";
         console.log(currentNum + "current num");
         currentDisplayNumber.textContent = currentNum;
+    }
+}
+
+function keyPressHandler(e) {
+    e.preventDefault();
+    console.log(e)
+    if (e.key >= 0 && e.key <=9) {
+        DisplayUpdater(e.key)
+    }
+    if (e.key === "Enter" || e.key === "=" && currentNum != "" && previousNum != "") {
+        calculate();
+    }
+    if (e.code === "Equal" && e.shiftKey) {
+        handleOperator("+")
+    }
+    if (e.key === "-") {
+        handleOperator("-");
+    }
+    if (e.key === "/") {
+        handleOperator("/");
+    }
+    if (e.key === "*") {
+        handleOperator("x");
+    }
+    if (e.key === ".") {
+        decimalNumber();
+    }
+    if (e.key === "Backspace" || e.key === "Escape") {
+        clearDisplay();
     }
 }
