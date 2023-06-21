@@ -109,26 +109,19 @@ function keyPressHandler(e) {
     console.log(e)
     if (e.key >= 0 && e.key <=9) {
         DisplayUpdater(e.key)
-    }
-    if (e.key === "Enter" || e.key === "=" && currentNum != "" && previousNum != "") {
+    } else if (e.key === "Enter" || e.key === "=" && currentNum != "" && previousNum != "") {
         calculate();
-    }
-    if (e.code === "Equal" && e.shiftKey) {
-        handleOperator("+")
-    }
-    if (e.key === "-") {
+    } else if (e.code === "Equal" && e.shiftKey) {
+        handleOperator("+");
+    } else if (e.key === "-") {
         handleOperator("-");
-    }
-    if (e.key === "/") {
+    } else if (e.key === "/") {
         handleOperator("/");
-    }
-    if (e.key === "*" || e.key === "x") {
+    } else if (e.key === "*" || e.key === "x") {
         handleOperator("x");
-    }
-    if (e.key === ".") {
+    } else if (e.key === ".") {
         decimalNumber();
-    }
-    if (e.key === "Backspace" || e.key === "Escape") {
+    } else if (e.key === "Backspace" || e.key === "Escape") {
         clearDisplay();
     }
 }
