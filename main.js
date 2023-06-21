@@ -62,7 +62,8 @@ function handleOperator(op) {
     previousDisplayNumber.textContent = previousNum + " " + operator;
     currentNum = "";
     currentDisplayNumber.textContent = 0;
-    console.log(currentNum + "current num")
+    console.log(previousNum);
+    console.log(currentNum + "current num");
 }
 
 // logic for calculating numbers
@@ -76,9 +77,9 @@ function calculate() {
     } else if (operator === "-") {
         previousNum -= currentNum;
     } else if (operator === "x") {
-        previousNum *= previousNum;
-    } else if (operator=== "/") {
-        previousNum /= previousNum;
+        previousNum *= currentNum;
+    } else if (operator === "/") {
+        previousNum /= currentNum;
     }
     currentDisplayNumber.textContent = previousNum;
     previousDisplayNumber.textContent = "--";
@@ -121,7 +122,7 @@ function keyPressHandler(e) {
     if (e.key === "/") {
         handleOperator("/");
     }
-    if (e.key === "*") {
+    if (e.key === "*" || e.key === "x") {
         handleOperator("x");
     }
     if (e.key === ".") {
