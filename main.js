@@ -1,6 +1,7 @@
 let currentNum = "";
 let previousNum = "";
 let operator = "";
+let string = "";
 
 const currentDisplayNumber = document.querySelector(".current-num");
 const previousDisplayNumber = document.querySelector(".previous-num");
@@ -75,27 +76,34 @@ function calculate() {
         previousNum *= currentNum;
     } else if (operator === "/") {
         previousNum /= currentNum;
+        string = previousNum.toString();
+        console.log(typeof(previousNum));
+        console.log(previousNum);
+        console.log(string);
+        console.log(typeof(string));
+    }
         if (Number.isNaN(previousNum)) {
             previousNum = "UNDEFINED";
             currentNum = "";
             operator = "";
             console.log(previousNum + " previous number from calculate");
-            currentDisplayNumber.textContent = previousNum;
         } else if (!isFinite(previousNum)) {
             previousNum = "ERROR";
             currentNum = "";
             operator = "";
             console.log(previousNum + " previous number from calculate");
-            currentDisplayNumber.textContent = previousNum;
+        } else if (string.length >= 11){
+            previousNum = string.slice(0,11) + "...";
+            console.log(previousNum);
         }
-        
-    }
-    previousDisplayNumber.textContent = "--";
-    currentDisplayNumber.textContent = previousNum;
-    previousNum = "";
-    currentNum = "";
-    operator = "";
+        previousDisplayNumber.textContent = "--";
+        currentDisplayNumber.textContent = previousNum;
+        previousNum = "";
+        currentNum = "";
+        operator = "";
+     
 }
+
 
 function clearDisplay() {
     previousNum = "";
