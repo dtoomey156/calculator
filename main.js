@@ -1,7 +1,6 @@
 let currentNum = "";
 let previousNum = "";
 let operator = "";
-let point = "";
 
 const currentDisplayNumber = document.querySelector(".current-num");
 const previousDisplayNumber = document.querySelector(".previous-num");
@@ -38,11 +37,9 @@ numberButtons.forEach(poop => {
 // textContent will return a string
 
 function DisplayUpdater(number) {
-    console.log(number);
     if (currentNum.length <= 11) {
         currentNum += number;
         currentDisplayNumber.textContent = currentNum;
-        console.log(currentNum + "current number")
     }
     
 }
@@ -62,15 +59,13 @@ function handleOperator(op) {
     previousDisplayNumber.textContent = previousNum + " " + operator;
     currentNum = "";
     currentDisplayNumber.textContent = 0;
-    console.log(previousNum);
-    console.log(currentNum + "current num");
 }
 
 // logic for calculating numbers
 
 function calculate() {
-    previousNum = Number(previousNum);
-    currentNum = Number(currentNum);
+    // previousNum = Number(previousNum);
+    // currentNum = Number(currentNum);
 
     if (operator === "+") {
         previousNum += currentNum;
@@ -80,11 +75,24 @@ function calculate() {
         previousNum *= currentNum;
     } else if (operator === "/") {
         previousNum /= currentNum;
+        if (Number.isNaN(previousNum)) {
+            previousNum = "Undefined";
+            console.log(previousNum + " previous number from calculate");
+            currentDisplayNumber.textContent = previousNum;
+        } else if (!isFinite(previousNum)) {
+            previousNum = "ERROR";
+            currentNum = "";
+            operator = "";
+            console.log(previousNum + " previous number from calculate");
+            currentDisplayNumber.textContent = previousNum;
+        }
+        
     }
-    currentDisplayNumber.textContent = previousNum;
     previousDisplayNumber.textContent = "--";
+    currentDisplayNumber.textContent = previousNum;
     previousNum = "";
     currentNum = "";
+    operator = "";
 }
 
 function clearDisplay() {
@@ -99,14 +107,12 @@ function clearDisplay() {
 function decimalNumber() {
     if(!currentNum.includes(".")) {
         currentNum += ".";
-        console.log(currentNum + "current num");
         currentDisplayNumber.textContent = currentNum;
     }
 }
 
 function keyPressHandler(e) {
     e.preventDefault();
-    console.log(e)
     if (e.key >= 0 && e.key <=9) {
         DisplayUpdater(e.key)
     } else if (e.key === "Enter" || e.key === "=" && currentNum != "" && previousNum != "") {
