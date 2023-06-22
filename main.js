@@ -28,9 +28,9 @@ window.addEventListener("keydown", keyPressHandler);
 // Adds event listeners to number buttons
 // Understanding this is bad practice, I'm using whacky variables to reinforce JS function to myself
 
-numberButtons.forEach(poop => {
-    poop.addEventListener("click", whatever => {
-        DisplayUpdater(whatever.target.textContent);
+numberButtons.forEach(btn => {
+    btn.addEventListener("click", e => {
+        DisplayUpdater(e.target.textContent);
     })
 })
 
@@ -65,11 +65,13 @@ function handleOperator(op) {
 // logic for calculating numbers
 
 function calculate() {
-    // previousNum = Number(previousNum);
-    // currentNum = Number(currentNum);
+    previousNum = Number(previousNum);
+    currentNum = Number(currentNum);
 
     if (operator === "+") {
         previousNum += currentNum;
+        console.log(previousNum +"bb");
+        console.log(typeof(previousNum));
     } else if (operator === "-") {
         previousNum -= currentNum;
     } else if (operator === "x") {
@@ -81,28 +83,61 @@ function calculate() {
         console.log(previousNum);
         console.log(string);
         console.log(typeof(string));
-    }
         if (Number.isNaN(previousNum)) {
             previousNum = "UNDEFINED";
-            currentNum = "";
-            operator = "";
+            // currentNum = "";
+            // operator = "";
             console.log(previousNum + " previous number from calculate");
         } else if (!isFinite(previousNum)) {
             previousNum = "ERROR";
-            currentNum = "";
-            operator = "";
+            // currentNum = "";
+            // operator = "";
             console.log(previousNum + " previous number from calculate");
-        } else if (string.length >= 11){
+        } else if (string.length >= 11) {
             previousNum = string.slice(0,11) + "...";
-            console.log(previousNum);
+            // let slicedString = string.slice(0,11) + "...";
+            // console.log(slicedString);
+            // previousDisplayNumber.textContent = "--";
+            // currentDisplayNumber.textContent = slicedString;
+            // previousNum = "";
+            // currentNum = "";
+            // operator = "";
+            // return;
         }
-        previousDisplayNumber.textContent = "--";
-        currentDisplayNumber.textContent = previousNum;
-        previousNum = "";
-        currentNum = "";
-        operator = "";
+            
+    }
+        
+    previousDisplayNumber.textContent = "--";
+    currentDisplayNumber.textContent = previousNum;
+    previousNum = "";
+    currentNum = "";
+    operator = "";
      
 }
+
+// function multiply() {
+//     previousNum /= currentNum;
+//     string = previousNum.toString();
+//     if (Number.isNaN(previousNum)) {
+//         previousNum = "UNDEFINED";
+//         // currentNum = "";
+//         // operator = "";
+//         console.log(previousNum + " previous number from calculate");
+//     } else if (!isFinite(previousNum)) {
+//         previousNum = "ERROR";
+//         // currentNum = "";
+//         // operator = "";
+//         console.log(previousNum + " previous number from calculate");
+//     } else if (string.length >= 11){
+//         previousNum = string.slice(0,11) + "...";
+//         console.log(previousNum);
+//     }
+//     previousDisplayNumber.textContent = "--";
+//     currentDisplayNumber.textContent = previousNum;
+//     previousNum = "";
+//     currentNum = "";
+//     operator = "";
+// }
 
 
 function clearDisplay() {
