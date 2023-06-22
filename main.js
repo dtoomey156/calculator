@@ -76,7 +76,9 @@ function calculate() {
     } else if (operator === "/") {
         previousNum /= currentNum;
         if (Number.isNaN(previousNum)) {
-            previousNum = "Undefined";
+            previousNum = "UNDEFINED";
+            currentNum = "";
+            operator = "";
             console.log(previousNum + " previous number from calculate");
             currentDisplayNumber.textContent = previousNum;
         } else if (!isFinite(previousNum)) {
