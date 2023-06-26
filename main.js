@@ -2,6 +2,7 @@ let currentNum = "";
 let previousNum = "";
 let operator = "";
 let string = "";
+let rollingTotal = "";
 
 const currentDisplayNumber = document.querySelector(".current-num");
 const previousDisplayNumber = document.querySelector(".previous-num");
@@ -30,16 +31,25 @@ window.addEventListener("keydown", keyPressHandler);
 
 numberButtons.forEach(btn => {
     btn.addEventListener("click", e => {
-        DisplayUpdater(e.target.textContent);
+        handleNumber(e.target.textContent);
     })
 })
 
 // Function that will update the display
 // textContent will return a string
 
-function DisplayUpdater(number) {
+// function handleNumber(number) {
+//     if (currentNum.length <= 11) {
+//         currentNum += number;
+//         currentDisplayNumber.textContent = currentNum;
+//     }
+    
+// }
+
+function handleNumber(number) {
     if (currentNum.length <= 11) {
         currentNum += number;
+        console.log(currentNum + " current num - handle number")
         currentDisplayNumber.textContent = currentNum;
     }
     
@@ -56,22 +66,87 @@ operators.forEach(btn => {
 
 function handleOperator(op) {
     operator = op;
-    previousNum = currentNum;
-    previousDisplayNumber.textContent = previousNum + " " + operator;
-    currentNum = "";
-    currentDisplayNumber.textContent = 0;
+    if (previousNum !="" && currentNum !="") {
+        calculateRolling();
+    } else {
+        previousNum = currentNum;
+        previousDisplayNumber.textContent = previousNum + " " + operator;
+        currentNum = "";
+        currentDisplayNumber.textContent = 0;
+    }
+}
+
+function calculateRolling() {
+    previousNum = Number(previousNum);
+    currentNum = Number(currentNum);
+    rollingTotal = Number(rollingTotal);
+    rollingTotal = previousNum + currentNum;
+    currentNum = rollingTotal;
+    console.log(rollingTotal);
 }
 
 // logic for calculating numbers
 
+// function calculate() {
+//     previousNum = Number(previousNum);
+//     currentNum = Number(currentNum);
+
+//     if (operator === "+") {
+//         previousNum += currentNum;
+//         console.log(previousNum +"bb");
+//         console.log(typeof(previousNum));
+//     } else if (operator === "-") {
+//         previousNum -= currentNum;
+//     } else if (operator === "x") {
+//         previousNum *= currentNum;
+//     } else if (operator === "/") {
+//         previousNum /= currentNum;
+//         string = previousNum.toString();
+//         console.log(typeof(previousNum));
+//         console.log(previousNum);
+//         console.log(string);
+//         console.log(typeof(string));
+//         if (Number.isNaN(previousNum)) {
+//             previousNum = "UNDEFINED";
+//             console.log(previousNum + " previous number from calculate");
+//         } else if (!isFinite(previousNum)) {
+//             previousNum = "ERROR";
+//             console.log(previousNum + " previous number from calculate");
+//         } else if (string.length >= 11) {
+//             currentDisplayNumber.textContent = string.slice(0,11) + "...";
+//             previousDisplayNumber.textContent = "--";
+//             previousNum = "";
+//             currentNum = "";
+//             operator = "";
+//             return;
+//         }
+            
+//     }
+        
+//     previousDisplayNumber.textContent = "--";
+//     currentDisplayNumber.textContent = previousNum;
+//     storedNum = previousNum;
+//     storedOperator = operator;
+//     console.log("stored operator " + storedOperator);
+//     console.log("stored num " + storedNum);
+//     previousNum = "";
+//     currentNum = "";
+//     operator = "";
+     
+// }
+
+// MESS WITH THIS ONE
+
 function calculate() {
+    if (storedNum != "") {
+        previousNum = storedNum;
+        console.log("previous num" + previousNum);
+    }
     previousNum = Number(previousNum);
     currentNum = Number(currentNum);
 
     if (operator === "+") {
         previousNum += currentNum;
-        console.log(previousNum +"bb");
-        console.log(typeof(previousNum));
     } else if (operator === "-") {
         previousNum -= currentNum;
     } else if (operator === "x") {
@@ -79,36 +154,25 @@ function calculate() {
     } else if (operator === "/") {
         previousNum /= currentNum;
         string = previousNum.toString();
-        console.log(typeof(previousNum));
-        console.log(previousNum);
-        console.log(string);
-        console.log(typeof(string));
         if (Number.isNaN(previousNum)) {
             previousNum = "UNDEFINED";
-            // currentNum = "";
-            // operator = "";
-            console.log(previousNum + " previous number from calculate");
         } else if (!isFinite(previousNum)) {
             previousNum = "ERROR";
-            // currentNum = "";
-            // operator = "";
-            console.log(previousNum + " previous number from calculate");
         } else if (string.length >= 11) {
-            previousNum = string.slice(0,11) + "...";
-            // let slicedString = string.slice(0,11) + "...";
-            // console.log(slicedString);
-            // previousDisplayNumber.textContent = "--";
-            // currentDisplayNumber.textContent = slicedString;
-            // previousNum = "";
-            // currentNum = "";
-            // operator = "";
-            // return;
+            currentDisplayNumber.textContent = string.slice(0,11) + "...";
+            previousDisplayNumber.textContent = "--";
+            previousNum = "";
+            currentNum = "";
+            operator = "";
+            return;
         }
             
     }
         
     previousDisplayNumber.textContent = "--";
     currentDisplayNumber.textContent = previousNum;
+    console.log("previous num" + previousNum);
+    console.log("current num" + currentNum);
     previousNum = "";
     currentNum = "";
     operator = "";
@@ -144,6 +208,7 @@ function clearDisplay() {
     previousNum = "";
     currentNum = "";
     operator = "";
+    rollingTotal = "";
     currentDisplayNumber.textContent = "--";
     previousDisplayNumber.textContent = "--";
 
