@@ -47,12 +47,14 @@ numberButtons.forEach(btn => {
 // }
 
 function handleNumber(number) {
-    if (currentNum.length <= 11) {
+    if (previousNum !="" && operator =="") {
+        previousNum = "";
         currentNum += number;
-        console.log(currentNum + " current num - handle number")
+    } else if (currentNum.length <= 11) {
+        currentNum += number;
+        console.log(currentNum);
         currentDisplayNumber.textContent = currentNum;
     }
-    
 }
 
 
