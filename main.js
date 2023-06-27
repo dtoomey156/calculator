@@ -12,6 +12,7 @@ const decimal = document.querySelector(".decimal");
 const clear = document.querySelector(".clear");
 const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
+const plusMinus = document.querySelector(".plus-minus");
 
 // Added validation to event listener so that the calculate fucntion only fires if there is a current num and previous num
 
@@ -23,6 +24,8 @@ equal.addEventListener("click", () => {
 clear.addEventListener("click", clearDisplay);
 
 decimal.addEventListener("click", decimalNumber);
+
+plusMinus.addEventListener("click", plusOrMinus);
 
 window.addEventListener("keydown", keyPressHandler);
 
@@ -52,7 +55,7 @@ function handleNumber(number) {
         currentNum += number;
     } else if (currentNum.length <= 11) {
         currentNum += number;
-        console.log(currentNum);
+        console.log(currentNum + " current num");
         currentDisplayNumber.textContent = currentNum;
     }
 }
@@ -246,10 +249,23 @@ function decimalNumber() {
     }
 }
 
+function plusOrMinus() {
+    if (!currentNum.includes("-")) {
+        currentNum = "-" + currentNum;
+        console.log(currentNum);
+        currentDisplayNumber.textContent = currentNum;
+    } else if (currentNum.includes("-")) {
+        currentNum = currentNum.replace("-", "");
+        console.log(currentNum);
+        currentDisplayNumber.textContent = currentNum;
+    }
+}
+
+
 function keyPressHandler(e) {
     e.preventDefault();
     if (e.key >= 0 && e.key <=9) {
-        DisplayUpdater(e.key)
+        handleNumber(e.key)
     } else if (e.key === "Enter" || e.key === "=" && currentNum != "" && previousNum != "") {
         calculate();
     } else if (e.code === "Equal" && e.shiftKey) {
@@ -264,5 +280,7 @@ function keyPressHandler(e) {
         decimalNumber();
     } else if (e.key === "Backspace" || e.key === "Escape") {
         clearDisplay();
+    } else if (e.key === "Alt" && e.shiftKey && e.key === "=") {
+
     }
 }
