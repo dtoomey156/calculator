@@ -66,14 +66,17 @@ operators.forEach(btn => {
 
 function handleOperator(op) {
     operator = op;
+    console.log(operator);
     if (previousNum !="" && currentNum !="") {
         calculateRolling();
     } else {
         previousNum = currentNum;
+        console.log(previousNum + " previous num - handle operator");
         previousDisplayNumber.textContent = previousNum + " " + operator;
         currentNum = "";
         currentDisplayNumber.textContent = 0;
     }
+
 }
 
 function calculateRolling() {
@@ -81,72 +84,33 @@ function calculateRolling() {
     currentNum = Number(currentNum);
     rollingTotal = Number(rollingTotal);
     rollingTotal = previousNum + currentNum;
-    currentNum = rollingTotal;
-    console.log(rollingTotal);
+    previousNum = rollingTotal;
+    currentNum = "";
+
+    // currentNum = rollingTotal;
+    // console.log(rollingTotal + " rolling total - calculateRolling");
+    console.log(currentNum + "current num - calculateRolling");
+    console.log(previousNum + "previous num -calculate Rolling");
+    console.log(rollingTotal + "rolling total - calculateRolling");
+    // currentNum = Number(currentNum);
+    // rollingTotal = Number(rollingTotal);
+    // rollingTotal = previousNum + currentNum;
+    // currentNum = rollingTotal;
+    // console.log(rollingTotal);
+    // console.log(currentNum + "current num");
+    // console.log(previousNum + "previous num")
 }
 
 // logic for calculating numbers
 
-// function calculate() {
-//     previousNum = Number(previousNum);
-//     currentNum = Number(currentNum);
-
-//     if (operator === "+") {
-//         previousNum += currentNum;
-//         console.log(previousNum +"bb");
-//         console.log(typeof(previousNum));
-//     } else if (operator === "-") {
-//         previousNum -= currentNum;
-//     } else if (operator === "x") {
-//         previousNum *= currentNum;
-//     } else if (operator === "/") {
-//         previousNum /= currentNum;
-//         string = previousNum.toString();
-//         console.log(typeof(previousNum));
-//         console.log(previousNum);
-//         console.log(string);
-//         console.log(typeof(string));
-//         if (Number.isNaN(previousNum)) {
-//             previousNum = "UNDEFINED";
-//             console.log(previousNum + " previous number from calculate");
-//         } else if (!isFinite(previousNum)) {
-//             previousNum = "ERROR";
-//             console.log(previousNum + " previous number from calculate");
-//         } else if (string.length >= 11) {
-//             currentDisplayNumber.textContent = string.slice(0,11) + "...";
-//             previousDisplayNumber.textContent = "--";
-//             previousNum = "";
-//             currentNum = "";
-//             operator = "";
-//             return;
-//         }
-            
-//     }
-        
-//     previousDisplayNumber.textContent = "--";
-//     currentDisplayNumber.textContent = previousNum;
-//     storedNum = previousNum;
-//     storedOperator = operator;
-//     console.log("stored operator " + storedOperator);
-//     console.log("stored num " + storedNum);
-//     previousNum = "";
-//     currentNum = "";
-//     operator = "";
-     
-// }
-
-// MESS WITH THIS ONE
-
 function calculate() {
-    if (storedNum != "") {
-        previousNum = storedNum;
-        console.log("previous num" + previousNum);
-    }
     previousNum = Number(previousNum);
     currentNum = Number(currentNum);
 
     if (operator === "+") {
         previousNum += currentNum;
+        console.log(previousNum +"bb");
+        console.log(typeof(previousNum));
     } else if (operator === "-") {
         previousNum -= currentNum;
     } else if (operator === "x") {
@@ -154,10 +118,16 @@ function calculate() {
     } else if (operator === "/") {
         previousNum /= currentNum;
         string = previousNum.toString();
+        console.log(typeof(previousNum));
+        console.log(previousNum);
+        console.log(string);
+        console.log(typeof(string));
         if (Number.isNaN(previousNum)) {
             previousNum = "UNDEFINED";
+            console.log(previousNum + " previous number from calculate");
         } else if (!isFinite(previousNum)) {
             previousNum = "ERROR";
+            console.log(previousNum + " previous number from calculate");
         } else if (string.length >= 11) {
             currentDisplayNumber.textContent = string.slice(0,11) + "...";
             previousDisplayNumber.textContent = "--";
@@ -171,13 +141,56 @@ function calculate() {
         
     previousDisplayNumber.textContent = "--";
     currentDisplayNumber.textContent = previousNum;
-    console.log("previous num" + previousNum);
-    console.log("current num" + currentNum);
+    storedNum = previousNum;
+    storedOperator = operator;
+    console.log("rolling total " + rollingTotal);
+    console.log("stored operator " + storedOperator);
+    console.log("stored num " + storedNum);
     previousNum = "";
     currentNum = "";
     operator = "";
      
 }
+
+// MESS WITH THIS ONE
+
+// function calculate() {
+//     previousNum = Number(previousNum);
+//     currentNum = Number(currentNum);
+
+//     if (operator === "+") {
+//         previousNum += currentNum;
+//     } else if (operator === "-") {
+//         previousNum -= currentNum;
+//     } else if (operator === "x") {
+//         previousNum *= currentNum;
+//     } else if (operator === "/") {
+//         previousNum /= currentNum;
+//         string = previousNum.toString();
+//         if (Number.isNaN(previousNum)) {
+//             previousNum = "UNDEFINED";
+//         } else if (!isFinite(previousNum)) {
+//             previousNum = "ERROR";
+//         } else if (string.length >= 11) {
+//             currentDisplayNumber.textContent = string.slice(0,11) + "...";
+//             previousDisplayNumber.textContent = "--";
+//             previousNum = "";
+//             currentNum = "";
+//             operator = "";
+//             return;
+//         }
+            
+//     }
+        
+//     previousDisplayNumber.textContent = "--";
+//     currentDisplayNumber.textContent = previousNum;
+//     console.log("previous num" + previousNum);
+//     console.log("current num" + currentNum);
+//     previousNum = "";
+//     currentNum = "";
+//     operator = "";
+     
+// }
 
 // function multiply() {
 //     previousNum /= currentNum;
