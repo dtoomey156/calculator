@@ -67,7 +67,7 @@ operators.forEach(btn => {
 function handleOperator(op) {
     operator = op;
     console.log(operator);
-    if (previousNum !="" && currentNum !="") {
+    if (previousNum !="" && currentNum !="" || previousNum !="") {
         calculateRolling();
     } else {
         previousNum = currentNum;
@@ -79,6 +79,22 @@ function handleOperator(op) {
 
 }
 
+// function calculateRolling() {
+//     previousNum = Number(previousNum);
+//     currentNum = Number(currentNum);
+//     rollingTotal = Number(rollingTotal);
+//     rollingTotal = previousNum + currentNum;
+//     previousNum = rollingTotal;
+//     currentNum = "";
+//     // console logs
+//     console.log(currentNum + "current num - calculateRolling");
+//     console.log(previousNum + "previous num -calculate Rolling");
+//     console.log(rollingTotal + "rolling total - calculateRolling");
+   
+// }
+
+// Mess with this one and delete if need be
+
 function calculateRolling() {
     previousNum = Number(previousNum);
     currentNum = Number(currentNum);
@@ -86,22 +102,65 @@ function calculateRolling() {
     rollingTotal = previousNum + currentNum;
     previousNum = rollingTotal;
     currentNum = "";
-
-    // currentNum = rollingTotal;
-    // console.log(rollingTotal + " rolling total - calculateRolling");
+    // console logs
     console.log(currentNum + "current num - calculateRolling");
     console.log(previousNum + "previous num -calculate Rolling");
     console.log(rollingTotal + "rolling total - calculateRolling");
-    // currentNum = Number(currentNum);
-    // rollingTotal = Number(rollingTotal);
-    // rollingTotal = previousNum + currentNum;
-    // currentNum = rollingTotal;
-    // console.log(rollingTotal);
-    // console.log(currentNum + "current num");
-    // console.log(previousNum + "previous num")
+   
 }
 
 // logic for calculating numbers
+
+// function calculate() {
+//     previousNum = Number(previousNum);
+//     currentNum = Number(currentNum);
+
+//     if (operator === "+") {
+//         previousNum += currentNum;
+//         console.log(previousNum +"bb");
+//         console.log(typeof(previousNum));
+//     } else if (operator === "-") {
+//         previousNum -= currentNum;
+//     } else if (operator === "x") {
+//         previousNum *= currentNum;
+//     } else if (operator === "/") {
+//         previousNum /= currentNum;
+//         string = previousNum.toString();
+//         console.log(typeof(previousNum));
+//         console.log(previousNum);
+//         console.log(string);
+//         console.log(typeof(string));
+//         if (Number.isNaN(previousNum)) {
+//             previousNum = "UNDEFINED";
+//             console.log(previousNum + " previous number from calculate");
+//         } else if (!isFinite(previousNum)) {
+//             previousNum = "ERROR";
+//             console.log(previousNum + " previous number from calculate");
+//         } else if (string.length >= 11) {
+//             currentDisplayNumber.textContent = string.slice(0,11) + "...";
+//             previousDisplayNumber.textContent = "--";
+//             previousNum = "";
+//             currentNum = "";
+//             operator = "";
+//             return;
+//         }
+            
+//     }
+        
+//     previousDisplayNumber.textContent = "--";
+//     currentDisplayNumber.textContent = previousNum;
+//     storedNum = previousNum;
+//     storedOperator = operator;
+//     console.log("rolling total " + rollingTotal);
+//     console.log("stored operator " + storedOperator);
+//     console.log("stored num " + storedNum);
+//     previousNum = "";
+//     currentNum = "";
+//     operator = "";
+     
+// }
+
+// Mess with this one
 
 function calculate() {
     previousNum = Number(previousNum);
@@ -109,7 +168,6 @@ function calculate() {
 
     if (operator === "+") {
         previousNum += currentNum;
-        console.log(previousNum +"bb");
         console.log(typeof(previousNum));
     } else if (operator === "-") {
         previousNum -= currentNum;
@@ -127,7 +185,6 @@ function calculate() {
             console.log(previousNum + " previous number from calculate");
         } else if (!isFinite(previousNum)) {
             previousNum = "ERROR";
-            console.log(previousNum + " previous number from calculate");
         } else if (string.length >= 11) {
             currentDisplayNumber.textContent = string.slice(0,11) + "...";
             previousDisplayNumber.textContent = "--";
@@ -141,81 +198,15 @@ function calculate() {
         
     previousDisplayNumber.textContent = "--";
     currentDisplayNumber.textContent = previousNum;
-    storedNum = previousNum;
-    storedOperator = operator;
-    console.log("rolling total " + rollingTotal);
-    console.log("stored operator " + storedOperator);
-    console.log("stored num " + storedNum);
-    previousNum = "";
+    
+    // rollingTotal = Number(rollingTotal);
+    // rollingTotal = previousNum;
+    // previousNum = rollingTotal;
     currentNum = "";
+    console.log(previousNum + " previous num - calculate");
     operator = "";
      
 }
-
-// MESS WITH THIS ONE
-
-// function calculate() {
-//     previousNum = Number(previousNum);
-//     currentNum = Number(currentNum);
-
-//     if (operator === "+") {
-//         previousNum += currentNum;
-//     } else if (operator === "-") {
-//         previousNum -= currentNum;
-//     } else if (operator === "x") {
-//         previousNum *= currentNum;
-//     } else if (operator === "/") {
-//         previousNum /= currentNum;
-//         string = previousNum.toString();
-//         if (Number.isNaN(previousNum)) {
-//             previousNum = "UNDEFINED";
-//         } else if (!isFinite(previousNum)) {
-//             previousNum = "ERROR";
-//         } else if (string.length >= 11) {
-//             currentDisplayNumber.textContent = string.slice(0,11) + "...";
-//             previousDisplayNumber.textContent = "--";
-//             previousNum = "";
-//             currentNum = "";
-//             operator = "";
-//             return;
-//         }
-            
-//     }
-        
-//     previousDisplayNumber.textContent = "--";
-//     currentDisplayNumber.textContent = previousNum;
-//     console.log("previous num" + previousNum);
-//     console.log("current num" + currentNum);
-//     previousNum = "";
-//     currentNum = "";
-//     operator = "";
-     
-// }
-
-// function multiply() {
-//     previousNum /= currentNum;
-//     string = previousNum.toString();
-//     if (Number.isNaN(previousNum)) {
-//         previousNum = "UNDEFINED";
-//         // currentNum = "";
-//         // operator = "";
-//         console.log(previousNum + " previous number from calculate");
-//     } else if (!isFinite(previousNum)) {
-//         previousNum = "ERROR";
-//         // currentNum = "";
-//         // operator = "";
-//         console.log(previousNum + " previous number from calculate");
-//     } else if (string.length >= 11){
-//         previousNum = string.slice(0,11) + "...";
-//         console.log(previousNum);
-//     }
-//     previousDisplayNumber.textContent = "--";
-//     currentDisplayNumber.textContent = previousNum;
-//     previousNum = "";
-//     currentNum = "";
-//     operator = "";
-// }
-
 
 function clearDisplay() {
     previousNum = "";
