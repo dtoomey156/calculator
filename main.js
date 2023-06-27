@@ -81,6 +81,7 @@ function handleOperator(op) {
 
 }
 
+
 // function calculateRolling() {
 //     previousNum = Number(previousNum);
 //     currentNum = Number(currentNum);
@@ -95,15 +96,33 @@ function handleOperator(op) {
    
 // }
 
-// Mess with this one and delete if need be
+// MESS WITH THIS ONE AND DELETE IF NEED BE
 
 function calculateRolling() {
     previousNum = Number(previousNum);
     currentNum = Number(currentNum);
     rollingTotal = Number(rollingTotal);
-    rollingTotal = previousNum + currentNum;
-    previousNum = rollingTotal;
-    currentNum = "";
+
+    if (operator === "+") {
+        rollingTotal = previousNum + currentNum;
+        previousNum = rollingTotal;
+        currentNum = "";
+    } else if (operator === "-") {
+        rollingTotal = previousNum - currentNum;
+        previousNum = rollingTotal;
+        currentNum = "";
+    } else if (operator === "x") {
+        rollingTotal = previousNum * currentNum;
+        previousNum = rollingTotal;
+        currentNum = "";
+    } else if (operator === "/"){
+        rollingTotal = previousNum / currentNum;
+        previousNum = rollingTotal;
+        currentNum = "";
+    }
+    // rollingTotal = previousNum + currentNum;
+    // previousNum = rollingTotal;
+    // currentNum = "";
     // console logs
     console.log(currentNum + "current num - calculateRolling");
     console.log(previousNum + "previous num -calculate Rolling");
