@@ -13,6 +13,7 @@ const clear = document.querySelector(".clear");
 const numberButtons = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const plusMinus = document.querySelector(".plus-minus");
+const percent = document.querySelector(".percent-button");
 
 // Added validation to event listener so that the calculate fucntion only fires if there is a current num and previous num
 
@@ -26,6 +27,8 @@ clear.addEventListener("click", clearDisplay);
 decimal.addEventListener("click", decimalNumber);
 
 plusMinus.addEventListener("click", plusOrMinus);
+
+percent.addEventListener("click", calcPercent);
 
 window.addEventListener("keydown", keyPressHandler);
 
@@ -257,6 +260,22 @@ function plusOrMinus() {
     } else if (currentNum.includes("-")) {
         currentNum = currentNum.replace("-", "");
         console.log(currentNum);
+        currentDisplayNumber.textContent = currentNum;
+    }
+}
+
+function calcPercent() {
+    if (previousNum != "" && operator == "") {
+        previousNum /= 100;
+        // previousNum = parseFloat(previousNum);
+        console.log(previousNum + "percent");
+        currentDisplayNumber.textContent = previousNum;
+    } else if (previousNum != "" && operator == "x" && currentNum != "") {
+        currentNum /=100;
+    } else if (currentNum != "" && previousNum == ""){
+        currentNum /= 100;
+        console.log(currentNum);
+        console.log(typeof(currentNum));
         currentDisplayNumber.textContent = currentNum;
     }
 }
