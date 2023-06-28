@@ -58,7 +58,7 @@ function handleNumber(number) {
         currentNum += number;
     } else if (currentNum.length <= 11) {
         currentNum += number;
-        console.log(currentNum + " current num");
+        console.log(currentNum + " current num - handleNumber");
         currentDisplayNumber.textContent = currentNum;
     }
 }
@@ -72,11 +72,33 @@ operators.forEach(btn => {
     })
 })
 
+// function handleOperator(op) {
+//     // operator = op;
+//     // console.log(operator);
+//     if (previousNum !="" && currentNum !="" && operator !=="" || previousNum !="") {
+//         calculateRolling();
+//     } else {
+//         previousNum = currentNum;
+//         console.log(previousNum + " previous num - handle operator");
+//         previousDisplayNumber.textContent = previousNum + " " + operator;
+//         currentNum = "";
+//         currentDisplayNumber.textContent = 0;
+//     }
+//     operator = op;
+//     console.log(operator + " handle operator");
+// }
+
+// MESS WITH THIS ONE AND DELETE IF NEED BE
+
 function handleOperator(op) {
-    operator = op;
-    console.log(operator);
-    if (previousNum !="" && currentNum !="" || previousNum !="") {
+    if (previousNum !="" && currentNum !="" && operator !=="") {
         calculateRolling();
+    // } else if (previousNum != "") {
+    //     currentNum = previousNum;
+    //     previousNum = "";
+        // operator = op;
+        // calculateRolling();
+        // console.log(operator + " from else if previousNum");
     } else {
         previousNum = currentNum;
         console.log(previousNum + " previous num - handle operator");
@@ -84,8 +106,11 @@ function handleOperator(op) {
         currentNum = "";
         currentDisplayNumber.textContent = 0;
     }
-
+    operator = op;
+    console.log(operator + " handle operator");
 }
+
+
 
 
 // function calculateRolling() {
@@ -121,7 +146,7 @@ function calculateRolling() {
         rollingTotal = previousNum * currentNum;
         previousNum = rollingTotal;
         currentNum = "";
-    } else if (operator === "/"){
+    } else if (operator === "/") {
         rollingTotal = previousNum / currentNum;
         previousNum = rollingTotal;
         currentNum = "";
@@ -229,9 +254,11 @@ function calculate() {
     // rollingTotal = Number(rollingTotal);
     // rollingTotal = previousNum;
     // previousNum = rollingTotal;
-    currentNum = "";
-    console.log(previousNum + " previous num - calculate");
+    currentNum = previousNum;
+    previousNum = "";
     operator = "";
+    console.log(previousNum + " previous num - calculate");
+    
      
 }
 
@@ -265,7 +292,7 @@ function plusOrMinus() {
 }
 
 function calcPercent() {
-    if (previousNum != "" && operator == "") {
+    if (previousNum != "" && operator == "" && currentNum =="") {
         previousNum /= 100;
         // previousNum = parseFloat(previousNum);
         console.log(previousNum + "percent");
