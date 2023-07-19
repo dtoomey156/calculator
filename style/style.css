@@ -42,7 +42,7 @@ html {
     border-radius: 1rem;
     color: #0d6efd;
     padding: .5rem ;
-    box-shadow: 2px 2px 5px 2px rgb(66, 64, 64) inset;
+    box-shadow: 2px 2px 7px 0px rgb(66, 64, 64) inset;
 }
 
 .previous-num {
@@ -75,15 +75,20 @@ html {
 .button {
     background: none;
     color: #0d6efd;
-    border: .25rem solid #0d6efd;
+    /* border: .25rem solid #0d6efd; */
+    border-top: .25rem solid #0d6efd;
+    border-left: .25rem solid #0d6efd;
+    border-bottom: .125rem solid #0d6efd;
+    border-right: .125rem solid #0d6efd;
     border-radius: 1rem;
     cursor: pointer;
     width: 18%;
     font-size: 3rem;
-    box-shadow: 2px 2px 5px rgb(66, 64, 64);
+    box-shadow: 2px 2px 5px 1px rgb(66, 64, 64);
 }
 
 .button:active {
-    box-shadow: 1px 1px 2px black;
+    box-shadow: 1px 1px 2px rgb(66, 64, 64);
+    border: .125rem solid #0d6efd;
 }
 
