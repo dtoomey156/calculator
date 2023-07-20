@@ -25,15 +25,17 @@ html {
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
-    border-top: .5rem solid #0d6efd;
+    /* border-top: .5rem solid #0d6efd;
     border-left: .5rem solid #0d6efd;
     border-bottom: .2rem solid #0d6efd;
-    border-right: .2rem solid #0d6efd;
+    border-right: .2rem solid #0d6efd; */
     /* border: .5rem solid #0d6efd; */
     border-radius: 1rem;
-    background-color: rgba(232, 232, 238, 0.723);
+    /* background-color: rgba(232, 232, 238, 0.723); */
     /* background-image: linear-gradient(90deg, rgba(147, 160, 227, 0.2) 29%, rgba(0,212,255,.2)100%); */
-    box-shadow: 12px 12px 10px 5px rgb(66, 64, 64);
+    /* box-shadow: 12px 12px 10px 5px rgb(66, 64, 64); */
+    box-shadow: 12px 12px 10px 5px rgb(66, 64, 64),
+    0px 0px 10px 5px rgb(66, 64, 64);
 }
 
 .output {
