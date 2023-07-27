@@ -25,10 +25,10 @@ html {
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
-    /* border-top: .5rem solid #0d6efd;
+    border-top: .5rem solid #0d6efd;
     border-left: .5rem solid #0d6efd;
     border-bottom: .2rem solid #0d6efd;
-    border-right: .2rem solid #0d6efd; */
+    border-right: .2rem solid #0d6efd;
     /* border: .5rem solid #0d6efd; */
     border-radius: 1rem;
     /* background-color: rgba(232, 232, 238, 0.723); */
